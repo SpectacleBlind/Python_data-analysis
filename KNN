@@ -1,0 +1,47 @@
+우리거는 KNN으로 구현 가능 할 것으로 보인다.
+
+https://pintelligence.tistory.com/24?category=932371
+https://hleecaster.com/ml-knn-classifier-example/
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split 
+
+Pump_points = pd.read_excel('   ') # 각 점들의 좌표, 우리거는 y - flow / x- head
+Pump_labels = pd.read_excel('   ') # 각 점들의 분류 결과
+
+
+x_train, x_test, y_train, y_test = train_test_split(Pump_points, Pump_labels,test_size = 0.2)
+
+
+
+k_list = range(1,101)
+accuracies = []
+for k in k_list:
+  knn = KNeighborsClassifier(n_neighbors = k) 
+  knn.fit(x_train, y_train) 
+  accuracies.append(knn.score(x_test, x_test))
+  
+plt.plot(k_list, accuracies)
+plt.xlabel("k")
+plt.ylabel("Validation Accuracy")
+plt.title("Pump Check")
+plt.show()
+max(accuracies) #정확도 최대
+accuracies.index(max(accuracies)) # 그 시점의 k
+  
+
+
+"""
+최적 Test
+knn = KNeighborsClassifier(n_neighbors = ??) 
+
+knn.fit(Pump_points, Pump_labels)
+
+classes = {0:' ', 1:' ', 2:' '} - 분류
+
+new_pump = # 새 펌프의 값을 받는걸 UI 로 구성하자, 
+print(classes(knn.predict(new_pump)))
+
+"""
