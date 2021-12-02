@@ -1,0 +1,30 @@
+# 참고 사이트 : https://pintelligence.tistory.com/21?category=932371
+
+import numpy as np #넘파이 import
+import matplotlib.pyplot as plt # Math Plot import
+
+file_path = ('C:/Desktop/python/csv_test.csv')
+DataBase = np.loadtxt(file_path, delimiter = ',', usecols =(0,1,2)) #skiprows=1, dtype ='str'
+
+PumpType = np.array(DataBase[:,0])
+Flow = np.array(DataBase[:,1])
+Head = np.array(DataBase[:,2])
+
+Flow_mean = np.mean(Flow)
+Head_mean = np.mean(Head)
+
+
+
+# 데이터 타입을 변경하고 싶을 때, 데이터명 = np.asfarray(데이터명, 변경하고 싶은 데이터 타입)
+
+plt.scatter(Flow, Head, color='r', marker ='o', s = 20 label = '')
+plt.scatter(Flow, Head, color='g', marker ='^', s = 20 label = '')
+plt.scatter(Flow, Head, color='b', marker ='s', s = 20 label = '')
+
+plt.title("Pump Type") 
+plt.ylabel("Flow(m^3/hr)") 
+plt.xlabel("Head(m)") 
+# 파일 저장을 원할 때 : plt.savefig("Pump.png", dpi=600)
+plt.show()
+
+
