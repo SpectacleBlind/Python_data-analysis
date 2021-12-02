@@ -1,0 +1,13 @@
+import numpy as np #넘파이 import
+import matplotlib.pyplot as plt # Math Plot import
+
+file_path = ('C:/Desktop/python/csv_test.csv')
+DataBase = np.loadtxt(file_path, delimiter = ',', usecols =(0,1,2)) #skiprows=1, dtype ='str'
+
+PumpType = np.array(DataBase[:,0])
+Flow = np.array(DataBase[:,1])
+Head = np.array(DataBase[:,2])
+
+# 데이터 타입을 변경하고 싶을 때, 데이터명 = np.asfarray(데이터명, 변경하고 싶은 데이터 타입)
+
+plt.scatter(Flow, Head, color='r', marker ='o', s = 20)
