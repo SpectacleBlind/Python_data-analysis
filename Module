@@ -1,0 +1,28 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+file_path = ('C:/Users/sumin/Desktop/개발자/파이썬/data4.csv')
+DataBase = np.loadtxt(file_path, delimiter = ',' , dtype = np.float32) #skiprows=1, dtype ='str'
+
+
+Flow_1 = np.array(DataBase[:,0])
+Head_1 = np.array(DataBase[:,1])
+Flow_2 = np.array(DataBase[:,2])
+Head_2 = np.array(DataBase[:,3])
+Flow_3 = np.array(DataBase[:,4])
+Head_3 = np.array(DataBase[:,5])
+
+
+# 데이터 타입을 변경하고 싶을 때, 데이터명 = np.asfarray(데이터명, 변경하고 싶은 데이터 타입)
+
+plt.scatter(Flow_1, Head_1, color='r', marker ='o', s = 20 )
+plt.scatter(Flow_2, Head_2, color='g', marker ='^', s = 20 )
+plt.scatter(Flow_3, Head_3, color='b', marker ='s', s = 20 )
+
+plt.title("Pump Type") 
+plt.ylabel("Flow(m^3/hr)") 
+plt.xlabel("Head(m)") 
+# 파일 저장을 원할 때 : plt.savefig("Pump.png", dpi=600)
+plt.show()
+
+
